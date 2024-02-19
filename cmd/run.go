@@ -62,6 +62,12 @@ func init() {
 }
 
 func getEnvVars() {
-	environment = viper.GetString("ENV")
-	port = viper.GetString("PORT")
+	environment = "dev"
+	if viper.GetString("ENV") != "" {
+		environment = viper.GetString("ENV")
+	}
+	port = "8090"
+	if viper.GetString("PORT") != "" {
+		port = viper.GetString("PORT")
+	}
 }

@@ -34,6 +34,7 @@ func (p *PackCalcAPI) Calculate(w http.ResponseWriter, r *http.Request, _ httpro
 	reqBody, err := io.ReadAll(r.Body)
 	if err != nil {
 		http.Error(w, "Error invalid payload", http.StatusBadRequest)
+		p.logger.WithError(err)
 		return
 	}
 	payload := struct {
@@ -42,6 +43,7 @@ func (p *PackCalcAPI) Calculate(w http.ResponseWriter, r *http.Request, _ httpro
 	}{}
 	if err := json.Unmarshal(reqBody, &payload); err != nil {
 		http.Error(w, "Error try again ", http.StatusInternalServerError)
+		p.logger.WithError(err)
 		return
 	}
 	res := p.manager.CalculatePacks(payload.Items, payload.Packs)

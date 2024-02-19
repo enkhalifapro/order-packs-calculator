@@ -1,6 +1,9 @@
 package packing
 
-import "github.com/sirupsen/logrus"
+import (
+	"github.com/sirupsen/logrus"
+	"sort"
+)
 
 // Manager is a struct that holds the packing functionalities
 type Manager struct {
@@ -19,6 +22,11 @@ func (mgr *Manager) CalculatePacks(items int, packs []int) PackMix {
 	if len(packs) == 0 {
 		return PackMix{}
 	}
+
+	// sort packs desc
+	sort.Slice(packs, func(i, j int) bool {
+		return packs[i] > packs[j]
+	})
 
 	m := getLeastPacks(items, packs)
 

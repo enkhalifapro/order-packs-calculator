@@ -2,6 +2,7 @@ package packing
 
 import (
 	"github.com/magiconair/properties/assert"
+	"github.com/sirupsen/logrus"
 	"testing"
 )
 
@@ -56,9 +57,10 @@ func TestCalculator(t *testing.T) {
 		},
 	}
 
+	srv := NewManager(&logrus.Entry{})
 	// Act
 	for _, d := range testData {
-		res := CalculatePacks(d.Items, d.Packs)
+		res := srv.CalculatePacks(d.Items, d.Packs)
 		assert.Equal(t, res.Total, d.ExpectedTotal)
 		assert.Equal(t, res.Count, d.ExpectedCount)
 		assert.Equal(t, res.ExtraItems, d.ExpectedExtraItem)
