@@ -5,10 +5,10 @@ RUN apk add --no-cache git
 # Set the Current Working Directory inside the container
 WORKDIR /tmp/order-pack-calculator
 
-COPY go.mod .
-COPY go.sum .
+#COPY go.mod .
+#COPY go.sum .
 
-RUN go mod download
+#RUN go mod download
 
 COPY . .
 
