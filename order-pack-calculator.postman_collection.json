@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "85b0d260-ccab-44c1-8cd2-e1aed0984b6f",
+		"name": "order-pack-calculator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "483711"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8050/packing/calculate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"items\":263,\n    \"packs\":[31,53,21]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8050/packing/calculate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8050",
+					"path": [
+						"packing",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
