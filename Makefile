@@ -13,3 +13,6 @@ build: clean
 
 build-docker:
 	docker build -t $(SERVICE) .
+
+run-docker:
+	docker run -p 8090:8090 $(SERVICE)
