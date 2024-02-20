@@ -10,6 +10,7 @@ type Manager struct {
 	logger *logrus.Entry
 }
 
+// NewManager returns a new instance of packing Manager
 func NewManager(logger *logrus.Entry) *Manager {
 	return &Manager{
 		logger: logger,

@@ -58,6 +58,7 @@ func TestCalculator(t *testing.T) {
 	}
 
 	srv := NewManager(&logrus.Entry{})
+
 	// Act
 	for _, d := range testData {
 		res := srv.CalculatePacks(d.Items, d.Packs)
