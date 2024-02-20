@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8050/packing/calculate",
+			"name": "http://localhost:8090/packing/calculate",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -21,12 +21,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8050/packing/calculate",
+					"raw": "http://localhost:8090/packing/calculate",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8050",
+					"port": "8090",
 					"path": [
 						"packing",
 						"calculate"

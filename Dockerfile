@@ -22,4 +22,4 @@ COPY --from=builder /tmp/order-pack-calculator/out/order-pack-calculator /app/or
 # This container exposes port 8090 to the outside world
 EXPOSE 8090
 
-CMD ["/app/order-pack-calculator"]
+CMD ["/app/order-pack-calculator", "run"]
