@@ -17,7 +17,7 @@ RUN go build -o ./out/order-pack-calculator main.go
 FROM alpine:latest
 RUN apk add ca-certificates
 
-COPY --from=builder /tmp/go-sample-app/out/order-pack-calculator /app/order-pack-calculator
+COPY --from=builder /tmp/order-pack-calculator/out/order-pack-calculator /app/order-pack-calculator
 
 # This container exposes port 8090 to the outside world
 EXPOSE 8090
