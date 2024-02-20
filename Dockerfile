@@ -5,18 +5,13 @@ RUN apk add --no-cache git
 # Set the Current Working Directory inside the container
 WORKDIR /tmp/order-pack-calculator
 
-#COPY go.mod .
-#COPY go.sum .
-
-#RUN go mod download
-
 COPY . .
 
 # Unit tests
 RUN CGO_ENABLED=0 go test -v
 
 # Build the Go app
-RUN go build -o ./out/order-pack-calculator .
+RUN go build -o ./out/order-pack-calculator main.go
 
 # Start fresh from a smaller image
 FROM alpine:latest
