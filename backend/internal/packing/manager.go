@@ -95,7 +95,7 @@ func getPackCombinationOptions(leastPacks map[int]int, items int, packs []int) [
 			}
 
 			if i == (len(packs) - 1) {
-				if rem <= packs[len(packs)-1] {
+				if rem > 0 && rem <= packs[len(packs)-1] {
 					leastPacks[packs[len(packs)-1]] += 1
 					total, count, mCpy := getMapTotal(leastPacks)
 					extraItems := total - items
