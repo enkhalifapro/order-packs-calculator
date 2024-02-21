@@ -15,7 +15,6 @@ func NewManager(logger *logrus.Entry) *Manager {
 	return &Manager{
 		logger: logger,
 	}
-
 }
 
 // CalculatePacks is a function that calculates the best combination of packs for order

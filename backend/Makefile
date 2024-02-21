@@ -10,6 +10,9 @@ build: clean
 	mkdir bin
 	GOOS=linux GOARCH=amd64 go build -o bin/$(SERVICE) main.go
 
+run:
+	go run main.go run
+
 build-docker:
 	docker build -t $(SERVICE) .
 
