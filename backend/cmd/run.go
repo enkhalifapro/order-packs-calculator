@@ -10,6 +10,7 @@ import (
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
+	"github.com/rs/cors"
 )
 
 const (
@@ -45,7 +46,8 @@ var (
 			packingAPI := api.NewPackingAPI(logger, packingManager)
 			router.POST("/packing/calculate", packingAPI.Calculate)
 			logger.Infof("%s app started", appName)
-			logger.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), router))
+			r := cors.AllowAll().Handler(router)
+			logger.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), r))
 		},
 	}
 )
