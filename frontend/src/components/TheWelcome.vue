@@ -5,7 +5,7 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
-import { ref, reactive } from 'vue'
+import { ref, reactive, type Ref } from 'vue'
 import axios from 'axios'
 
 
@@ -14,10 +14,14 @@ let id = 0
 
 let newPackSize = ref(0)
 let packSizes = ref([])
-let items = ref(0)
+let items: Ref<number> = ref(0)
 
-let packsResult = reactive([])
-let summaryResult = {}
+let packsResult = reactive([{ count: 0, size: 0 }])
+let summaryResult = {
+  extraItems: 0,
+  count: 0,
+  total: 0
+}
 
 function addPackSize() {
   packSizes.value.push({ id: id++, size: newPackSize.value })
@@ -29,16 +33,17 @@ function removePackSize(packSize: any) {
 }
 
 async function calculate() {
-  let sizes = []
+  let sizes: any = []
   packSizes.value.forEach(function(s) {
     sizes.push(parseInt(s.size))
   })
 
   console.log(sizes)
+
   const { data, status } = await axios.post(
       'http://localhost:8090/packing/calculate',
       {
-        'items': parseInt(items.value),
+        'items': parseInt(String(items.value)),
         'packs': sizes
       },
       {
@@ -56,7 +61,7 @@ async function calculate() {
 
   packsResult.splice(0)
   for (let i = 0; i < packsRes.sizes.length; i++) {
-    packsResult.push({ size: packsRes.sizes[i], count: packsRes.counts[i] })
+    packsResult.push({ size: parseInt(packsRes.sizes[i]), count: parseInt(<string>packsRes.counts[i]) })
   }
 
   summaryResult.total = data.Total
@@ -90,7 +95,7 @@ async function calculate() {
       <CommunityIcon />
     </template>
     <template #heading>Set Items Count</template>
-    <form @submit.prevent="addItems">
+    <form @submit.prevent="">
       <input v-model="items">
       <br>
       <button @click="calculate()">Calculate</button>
