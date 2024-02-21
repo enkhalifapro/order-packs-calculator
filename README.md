@@ -4,7 +4,7 @@
 This is a simple order pack calculator that takes in an order quantity and returns the number of packs required to fulfill the order. The calculator is designed to work with a predefined set of pack sizes and will return the most efficient combination of packs to fulfill the order.
 
 ## Run
-To install the app, simply clone the repository and run the following command in the root directory:
+To run the app, simply clone the repository and run the following command in the root directory:
 ```bash
 $ docker-compose up
 ```
