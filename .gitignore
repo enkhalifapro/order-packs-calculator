@@ -1,2 +1,4 @@
 .idea
 main
+bin
+node_modules
